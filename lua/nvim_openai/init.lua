@@ -39,10 +39,8 @@ end
 local function send_current_line()
     -- main funciton 2 
     local prompt = get_current_line()
-    print(prompt)
     assert(setup.api_key ~= nil)
     local answer=M.gpt3_api_call(setup.api_key, prompt)
-    print(answer)
     local ans_tbl = helpers.string_to_table(answer, 10)
     send_to_nvim(ans_tbl)
 end
