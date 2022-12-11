@@ -1,6 +1,16 @@
 
 local M = {}
 
+
+function M.table_to_string(table)
+    local text = " "
+    for k, v in pairs(table) do
+        text = text .. "\n" .. v
+    end
+
+    return text
+end
+
 function M.string_to_table(str, words_per_line)
     local tbl = {}
 
