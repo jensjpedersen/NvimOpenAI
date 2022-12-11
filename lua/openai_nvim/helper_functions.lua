@@ -3,9 +3,10 @@ local M = {}
 
 
 function M.table_to_string(table)
-    local text = " "
+    -- TODO stirp whitespaces
+    local text = ""
     for k, v in pairs(table) do
-        text = text .. "\n" .. v
+        text = text .. v
     end
 
     return text
