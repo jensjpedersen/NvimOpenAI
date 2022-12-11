@@ -1,5 +1,5 @@
-local M = require('openai_request')
-local helpers = require('helper_functions')
+local M = require('nvim_openai.openai_request')
+local helpers = require('nvim_openai.helper_functions')
 
 
 local setup = {
