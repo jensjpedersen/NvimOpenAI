@@ -48,17 +48,14 @@ local function send_current_line()
 end
 
 
--- do you know my name?
--- What is an AI?
-
--- Set keymaps
+-- dev: Set keymaps 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('v', '<leader>a', send_visual_selection, opts)
 vim.keymap.set('n', '<leader>a', send_current_line, opts)
 
--- return {
---     -- get_visual_mode_selection = get_visual_mode_selection
--- }
+return {
+    send_current_line = send_current_line
+}
 
 
 
