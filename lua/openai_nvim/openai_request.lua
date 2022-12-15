@@ -26,7 +26,7 @@ function M.gpt3_api_call(api_key, prompt)
         -d '{"model": "text-davinci-003", "prompt": "%s", "temperature": 0.5, "max_tokens": 2048}'
         ]], api_key, prompt)
 
-    local output = io.popen(command)
+    local output = io.popen('timeout 4' .. command)
     local output = output:read('*a')
 
     -- start, stop, match = string.find(output, '"text":(.+)","index"')
