@@ -17,8 +17,8 @@ local function send_visual_selection()
     assert(setup.api_key ~= nil)
     local answer=ai.gpt3_api_call(setup.api_key, prompt)
     if answer == nil then return end
-    local ans_tbl = helpers.string_to_table(answer, 10)
-    nvim.send_to_nvim(ans_tbl)
+    local ans_tbl = helpers.string_to_table(answer, 20)
+    nvim.send_to_nvim(ans_tbl, #table-1)
 end
 
 
@@ -28,8 +28,8 @@ local function send_current_line()
     assert(setup.api_key ~= nil)
     local answer=ai.gpt3_api_call(setup.api_key, prompt)
     if answer == nil then return end
-    local ans_tbl = helpers.string_to_table(answer, 10)
-    nvim.send_to_nvim(ans_tbl)
+    local ans_tbl = helpers.string_to_table(answer, 20)
+    nvim.send_to_nvim(ans_tbl, 0)
 end
 
 return {
@@ -37,6 +37,4 @@ return {
     send_visual_selection = send_visual_selection,
     setup = setup
 }
-
-
 

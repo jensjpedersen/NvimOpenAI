@@ -61,9 +61,9 @@ function M.line_break_to_table(str)
     end
 
     local lines = {}
-    local start = 0
+    local start = -2
     for _, stop in pairs(tbl) do
-        local line = str:sub(start+1, stop-1)
+        local line = str:sub(start+2, stop-1)
         table.insert(lines, line)
         start = stop
     end
