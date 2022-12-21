@@ -1,40 +1,35 @@
 local ai = require('openai_nvim.openai_request')
 local helpers = require('openai_nvim.helper_functions')
 local nvim = require('openai_nvim.nvim')
-
-local setup = {
-    -- Replace `<YOUR-API-KEY>` with your actual API key
-    api_key = os.getenv('OPENAI_API_KEY'),
-    -- Set up the request parameters
-    model = "text-davinci-002"
-}
+local config = require('openai_nvim.config') 
 
 
-local function send_visual_selection()
+local M = {}
+
+
+function M.send_visual_selection()
     -- main function 1 
+    local opts = config.setup()
     local table = nvim.get_visual_selection()
     local prompt = helpers.table_to_string(table)
-    assert(setup.api_key ~= nil)
-    local answer=ai.gpt3_api_call(setup.api_key, prompt)
+    assert(opts.api_key ~= nil)
+    local answer=ai.gpt3_api_call(opts.api_key, prompt)
     if answer == nil then return end
-    local ans_tbl = helpers.string_to_table(answer, 20)
+    local ans_tbl = helpers.string_to_table(answer, opts.words_per_line)
     nvim.send_to_nvim(ans_tbl, #table-1)
 end
 
 
-local function send_current_line()
+function M.send_current_line()
     -- main funciton 2 
+    local opts = config.setup()
     local prompt = nvim.get_current_line()
-    assert(setup.api_key ~= nil)
-    local answer=ai.gpt3_api_call(setup.api_key, prompt)
+    assert(opts.api_key ~= nil)
+    local answer=ai.gpt3_api_call(opts.api_key, prompt)
     if answer == nil then return end
-    local ans_tbl = helpers.string_to_table(answer, 20)
+    local ans_tbl = helpers.string_to_table(answer, opts.words_per_line)
     nvim.send_to_nvim(ans_tbl, 0)
 end
 
-return {
-    send_current_line = send_current_line,
-    send_visual_selection = send_visual_selection,
-    setup = setup
-}
+return M
 
