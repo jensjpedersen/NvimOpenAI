@@ -1,8 +1,8 @@
 
 # opeanai_nvim 
-This plugin integrates Open AI chat bots in neovim. 
-It makes it possible to send text from your buffer and get answers 
-pasted in your buffer.  
+This plugin integrates Open AI chat bots into Neovim. 
+It makes it possible to send text from your current buffer and get answers from an AI
+pasted into the buffer.  
 
 ![openai_nvim](https://user-images.githubusercontent.com/62065926/208917790-78e63840-20cd-4a7e-8b7c-053c2c83ad50.gif)
 
