@@ -3,6 +3,11 @@ local M = {}
 
 function M.setup()
     local opts = {}
+
+    if vim.g.openai_settings == nil then
+        vim.g.openai_settings = {}
+    end
+
     opts.api_key = vim.g.openai_settings.api_key or os.getenv('OPENAI_API_KEY')
     opts.model = vim.g.openai_settings.model or "text-davinci-002"
     opts.temperature = vim.g.openai_settings.temperature or 0.5
