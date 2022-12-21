@@ -43,7 +43,6 @@ function M.chat_gpt_api_call(api_key, prompt)
     local output = io.popen(command)
     local output = output:read('*a')
 
-    -- start, stop, match = string.find(output, '"text":(.+)","index"')
     local _, _, match = string.find(output, [["text":"\n\n(.+)","index"]])
 
     return match
