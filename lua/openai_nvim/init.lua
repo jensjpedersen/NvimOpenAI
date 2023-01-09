@@ -4,10 +4,9 @@ local nvim = require('openai_nvim.nvim')
 local config = require('openai_nvim.config')
 
 
-local M = {}
 
 
-function M.send_visual_selection()
+local function send_visual_selection()
     -- main function 1 
     local opts = config.setup()
     local table = nvim.get_visual_selection()
@@ -19,7 +18,7 @@ function M.send_visual_selection()
     nvim.send_to_nvim(ans_tbl, #table-1)
 end
 
-function M.send_current_line()
+local function send_current_line()
     -- main funciton 2 
     local opts = config.setup()
     local prompt = nvim.get_current_line()
@@ -30,6 +29,9 @@ function M.send_current_line()
     nvim.send_to_nvim(ans_tbl, 0)
 end
 
-return M
+return {
+    send_visual_selection = send_visual_selection,
+    send_current_line = send_current_line
+}
 
 
